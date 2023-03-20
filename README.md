@@ -1,2 +1,2 @@
 # cours-framework
-Repo for school
+Repo for school in collaboration with CorentinPageot
