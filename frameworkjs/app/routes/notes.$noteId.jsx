@@ -24,7 +24,7 @@ export async function loader({params}) {
   const noteId = params.noteId;
   const seletedNote = notes.find(note => note.id === noteId);
 
-  if(!selectedNote) {
+  if(!seletedNote) {
     throw json(
       { message: 'Could not find note for id ' + noteId },
       { status: 404 }
