@@ -31,7 +31,9 @@ export async function action({request}) {
   }
 //   const noteData = Object.fromEntries(formData);
 
-  // validations...
+  if(noteData.title.trim().length < 5) {
+    return {message: 'Invalid title - must be at least 5 characters long.'};
+  }
 
   const existingNotes = await getStoredNotes();
   noteData.id = new Date().toISOString();
