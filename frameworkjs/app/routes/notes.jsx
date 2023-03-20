@@ -42,6 +42,16 @@ export async function action({request}) {
   return redirect('/notes');
 }
 
+export function ErrorBoundary({error}) {
+  return (
+    <main className="error">
+      <h1>An error related to your notes occured !</h1>
+      <p>{error.message}</p>
+      <p>Go to <Link to="/">safety</Link> !</p>
+    </main>
+  )
+}
+
 export function links() {
   return [
     ...noteListLinks(),
