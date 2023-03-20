@@ -80,3 +80,10 @@ export function links() {
     ...newNotesLinks(),
   ];
 }
+
+export function meta() {
+  return {
+    title: "All notes",
+    description: "Manage yout notes with ease.",
+  }
+}
