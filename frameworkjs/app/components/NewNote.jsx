@@ -19,5 +19,10 @@ export default function NewNote() {
 }
 
 export function links() {
-  return [{ rel: 'stylesheet', href: styles }];
+  return [
+    {
+      rel: 'stylesheet',
+      href: styles
+    }
+  ];
 }
