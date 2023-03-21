@@ -1,17 +1,11 @@
 import {
-  Link,
   Links,
   LiveReload,
   Meta,
   Outlet,
   Scripts,
   ScrollRestoration,
-  useCatch,
 } from "@remix-run/react";
-
-import MainNavigation from "./components/MainNavigation";
-
-import styles from '~/styles/main.css';
 
 export const meta = () => ({
   charset: "utf-8",
@@ -27,9 +21,6 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <header>
-          <MainNavigation />
-        </header>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
@@ -37,64 +28,4 @@ export default function App() {
       </body>
     </html>
   );
-}
-
-export function CatchBoundary({error}) {
-  const caugthReponse = useCatch();
-  return (
-    <html lang="en">
-      <head>
-        <Meta />
-        <Links />
-        <title>{caugthReponse.statusText}</title>
-      </head>
-      <body>
-        <header>
-          <MainNavigation />
-        </header>
-        <main className="error">
-          <h1>{caugthReponse.statusText}</h1>
-          <p>{caugthReponse.data?.message || 'Something went wrong'}</p>
-          <p>Go to <Link to="/">safety</Link> !</p>
-        </main>
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
-      </body>
-    </html>
-  );
-}
-
-export function ErrorBoundary({error}) {
-  return (
-    <html lang="en">
-      <head>
-        <Meta />
-        <Links />
-        <title>An error occured</title>
-      </head>
-      <body>
-        <header>
-          <MainNavigation />
-        </header>
-        <main className="error">
-          <h1>An error occured !</h1>
-          <p>{error.message}</p>
-          <p>Go to <Link to="/">safety</Link> !</p>
-        </main>
-        <ScrollRestoration />
-        <Scripts />
-        <LiveReload />
-      </body>
-    </html>
-  );
-}
-
-export function links() {
-  return [
-    {
-      rel: 'stylesheet',
-      href: styles
-    }
-  ]
 }
