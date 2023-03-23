@@ -1,4 +1,5 @@
 import { Form, Link } from "@remix-run/react";
+import { authenticator } from "../services/auth.server";
 
 export default function LoginPage() {
   return (
@@ -15,3 +16,10 @@ export default function LoginPage() {
     </main>
   )
 }
+
+export async function action({ request }) {
+  return await authenticator.authenticate("user-pass", request, {
+    successRedirect: "/",
+    failureRedirect: "/login",
+  });
+};
