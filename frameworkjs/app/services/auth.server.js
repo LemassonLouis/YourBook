@@ -1,31 +1,44 @@
 import { Authenticator } from "remix-auth";
 import { FormStrategy } from "remix-auth-form";
 import { sessionStorage } from "~/services/session.server";
-// import { User } from "../../prisma/"
-// import { PrismaClient } from "@prisma/client";
-import { User } from "@prisma/client";
 
-// const prisma = new PrismaClient();
-// const User = prisma.user;
+// export let authenticator = new Authenticator<User>(sessionStorage);
+export let authenticator = new Authenticator(sessionStorage);
 
-export let authenticator = new Authenticator<User>(sessionStorage);
+authenticator.use(
+  new FormStrategy(async ({ form }) => {
 
-// console.log("authenticator", authenticator)
+    console.log("formStategy()");
 
-authenticator
+    let email = form.get("email");
+    let password = form.get("password");
 
-// authenticator.use(
-//   new FormStrategy(async ({ form }) => {
+    console.log("email", email, "password", password);
+    
+    try {
+        console.log("je vais hash");
+        var hashedPassword = await hash(password);
+        console.log("j'ai hash");
+        console.log("hashed password", hashedPassword);
+    }
+    catch(e) {
+        console.log("e", e);
+    }
 
-//     let email = form.get("email");
-//     let password = form.get("password");
 
-//     // let hashedPassword = await hash(password);
+    try {
+        console.log("je vais login")
+        var user = await login(email, password);
+        console.log("j'ai login");
+        console.log("user", user);
+    }
+    catch(e) {
+        console.log("e", e);
+    }
 
-//     let user = await login(email, password);
 
-//     return user;
-//   }),
+    return user;
+  }),
 
-//   "user-pass"
-// );
+  "user-pass"
+);

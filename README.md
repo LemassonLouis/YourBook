@@ -10,12 +10,22 @@ Repo for school in collaboration with CorentinPageot
 
 - https://www.youtube.com/watch?v=RBYJTop1e-g
 
-## Setup and use Prisma
+
+## Prisma
+
+### Setup and use
 
 - https://www.youtube.com/watch?v=4tXGRe5CDDg
 - https://www.prisma.io/docs/getting-started/setup-prisma/start-from-scratch/relational-databases-node-mysql
 
-## Use remix-auth
+### CRUD and API
+
+- https://www.prisma.io/docs/concepts/components/prisma-client/crud#create-a-single-record
+- https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#findunique
+
+
+## Remix-auth
 
 - https://www.youtube.com/watch?v=5O_uufXA8xE
 - https://github.com/sergiodxa/remix-auth
+- https://github.com/sergiodxa/remix-auth-form
