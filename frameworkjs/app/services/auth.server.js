@@ -1,44 +1,35 @@
 import { Authenticator } from "remix-auth";
 import { FormStrategy } from "remix-auth-form";
+import { createHmac } from 'node:crypto';
 import { sessionStorage } from "~/services/session.server";
+import { getUserByEmail } from "./user";
 
-// export let authenticator = new Authenticator<User>(sessionStorage);
 export let authenticator = new Authenticator(sessionStorage);
 
 authenticator.use(
   new FormStrategy(async ({ form }) => {
 
-    console.log("formStategy()");
-
     let email = form.get("email");
     let password = form.get("password");
 
-    console.log("email", email, "password", password);
-    
-    try {
-        console.log("je vais hash");
-        var hashedPassword = await hash(password);
-        console.log("j'ai hash");
-        console.log("hashed password", hashedPassword);
-    }
-    catch(e) {
-        console.log("e", e);
-    }
-
-
-    try {
-        console.log("je vais login")
-        var user = await login(email, password);
-        console.log("j'ai login");
-        console.log("user", user);
-    }
-    catch(e) {
-        console.log("e", e);
-    }
-
+    const hashedPassword = hash(password);
+    const user = await login(email, hashedPassword);
 
     return user;
   }),
 
   "user-pass"
 );
+
+export async function login(email, password) {
+  const user = await getUserByEmail(email);
+
+  if(!user) throw("No user find with this email");
+  if(user.password != password) throw("Invalid password");
+
+  return user;
+}
+
+export function hash(password) {
+  return createHmac('sha256', "toto").update(password).digest('hex');
+}
