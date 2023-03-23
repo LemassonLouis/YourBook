@@ -1,4 +1,5 @@
 import { Form, Link } from "@remix-run/react";
+import { authenticator } from "../services/auth.server";
 
 export default function RegisterPage() {
   return (
@@ -15,3 +16,12 @@ export default function RegisterPage() {
     </main>
   )
 }
+
+export async function action({ request }) {
+  console.log("request", request);
+  return await authenticator.authenticate("user-pass", request, {
+    successRedirect: "/",
+    // failureRedirect: "/register",
+    context: { caller: "/register" },
+  });
+};

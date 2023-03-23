@@ -2,18 +2,45 @@ import { Authenticator } from "remix-auth";
 import { FormStrategy } from "remix-auth-form";
 import { createHmac } from 'node:crypto';
 import { sessionStorage } from "~/services/session.server";
-import { getUserByEmail } from "./user";
+import { createUser, getUserByEmail } from "./user";
 
 export let authenticator = new Authenticator(sessionStorage);
 
 authenticator.use(
-  new FormStrategy(async ({ form }) => {
+  new FormStrategy(async ({ form, context }) => {
 
-    let email = form.get("email");
-    let password = form.get("password");
+    console.log("context", context);
 
+    const email = form.get("email");
+    const password = form.get("password");
     const hashedPassword = hash(password);
-    const user = await login(email, hashedPassword);
+    console.log("hashed password", hashedPassword);
+
+    const callFrom = context.caller;
+    console.log("call from", callFrom);
+    console.log(callFrom == "/register", callFrom === "/register");
+    console.log("is ok ?");
+
+    if(callFrom == "/register") {
+
+      console.log("password", password, "confimration", confirmation);
+      console.log("password !== confirmation", password !== confirmation);
+
+      if(password !== confirmation) throw("Password and confirmation aren't egal.");
+
+      const userData = {
+        email,
+        password: hashedPassword,
+      }
+
+      var user = await createUser(userData);
+    }
+    else {
+      var user = await login(email, hashedPassword);
+    }
+
+    console.log("user", user);
+    console.log("the end");
 
     return user;
   }),
@@ -24,8 +51,7 @@ authenticator.use(
 export async function login(email, password) {
   const user = await getUserByEmail(email);
 
-  if(!user) throw("No user find with this email");
-  if(user.password != password) throw("Invalid password");
+  if(!user || user?.password != password) throw("No user or password valid");
 
   return user;
 }

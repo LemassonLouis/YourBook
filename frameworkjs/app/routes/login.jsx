@@ -18,8 +18,10 @@ export default function LoginPage() {
 }
 
 export async function action({ request }) {
+  console.log('request', request);
   return await authenticator.authenticate("user-pass", request, {
     successRedirect: "/",
     failureRedirect: "/login",
+    context: { caller: "/login" },
   });
 };
