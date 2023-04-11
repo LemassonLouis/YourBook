@@ -6,10 +6,14 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
+import Navigation from "./components/Navigation/Navigation";
+
+import styles from "./styles/main.css";
+import { links as navigationLinks } from "./components/Navigation/Navigation";
 
 export const meta = () => ({
   charset: "utf-8",
-  title: "YoorBook",
+  title: "YourBook",
   viewport: "width=device-width,initial-scale=1",
 });
 
@@ -21,6 +25,9 @@ export default function App() {
         <Links />
       </head>
       <body>
+        <header>
+          <Navigation />
+        </header>
         <Outlet />
         <ScrollRestoration />
         <Scripts />
@@ -28,4 +35,15 @@ export default function App() {
       </body>
     </html>
   );
+}
+
+export function links() {
+  return [
+    {
+      rel: 'stylesheet',
+      href: styles
+    },
+    ...navigationLinks(),
+
+  ];
 }

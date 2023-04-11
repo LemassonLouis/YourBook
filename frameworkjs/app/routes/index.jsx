@@ -3,9 +3,7 @@ import { Link } from "@remix-run/react";
 export default function Index() {
   return (
     <main>
-      <h1>Hello world !</h1>
-      <Link to="/login">Login</Link>
-      <Link to="/register">Register</Link>
+      <h1>Livres</h1>
     </main>
   )
 }
