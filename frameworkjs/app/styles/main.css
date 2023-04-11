@@ -19,12 +19,18 @@ body {
     --secondary-color: #23B6FF;
     --CTA-secondary-hover: #1E9FDB;
     --CTA-secondary-focus: #56C9FF;
+    --important-color: #AF1515;
+    --CTA-important-hover: #8E1212;
+    --CTA-important-focus: #CE1A1A;
+
+    --text-color-1: black;
+    --text-color-2: white;
 }
 
 .CTA-button {
     padding: 8px 20px;
     font-weight: 600;
-    color: black;
+    color: var(--text-color-1);
     text-decoration: none;
     background-color: var(--secondary-color);
     border: none;
@@ -39,6 +45,19 @@ body {
     background-color: var(--CTA-secondary-focus);
 }
 
+.CTA-button.important {
+    color: var(--text-color-2);
+    background-color: var(--important-color);
+}
+
+.CTA-button.important:hover {
+    background-color: var(--CTA-important-hover);
+}
+
+.CTA-button.important:focus {
+    background-color: var(--CTA-important-focus);
+}
+
 .CTA-link {
     color: var(--primary-color);
 }
@@ -49,4 +68,16 @@ body {
 
 .CTA-link:active {
     color: var(--CTA-primary-focus);
+}
+
+.CTA-link.important {
+    color: var(--important-color);
+}
+
+.CTA-link.important:hover {
+    color: var(--CTA-important-hover);
+}
+
+.CTA-link.important:focus {
+    color: var(--CTA-important-focus);
 }

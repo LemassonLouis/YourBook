@@ -16,9 +16,9 @@ authenticator.use(
 
     const callFrom = context.caller;
 
-    if(callFrom == "/register") {
+    if (callFrom == "/register") {
 
-      if(password !== confirmation) throw("Password and confirmation aren't egal.");
+      if (password !== confirmation) throw ("Password and confirmation aren't egal.");
 
       const userData = {
         email,
@@ -37,14 +37,24 @@ authenticator.use(
   "user-pass"
 );
 
+export function hash(password) {
+  return createHmac('sha256', "toto").update(password).digest('hex');
+}
+
 export async function login(email, password) {
   const user = await getUserByEmail(email);
 
-  if(!user || user?.password != password) throw("No user or password valid");
+  if (!user || user?.password != password) throw ("No user or password valid");
 
   return user;
 }
 
-export function hash(password) {
-  return createHmac('sha256', "toto").update(password).digest('hex');
+export async function isLogged(request) {
+  const user = await authenticator.isAuthenticated(request);
+  if (!user) return false;
+  else return true;
+}
+
+export async function logout(request) {
+  await authenticator.logout(request, { redirectTo: "/logout" });
 }

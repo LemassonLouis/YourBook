@@ -5,7 +5,7 @@ import styles from './Navigation.css';
 
 export default function Navigation() {
 
-  const isAuthenticated = useLoaderData();
+  const isLogged = useLoaderData();
 
   return (
     <nav id="navigation">
@@ -16,12 +16,22 @@ export default function Navigation() {
         <div className="nav-item">
           <NavLink to="/">Livres</NavLink>
         </div>
-        <div className="nav-item">
-          <NavLink to="/listes">Mes listes</NavLink>
-        </div>
+        {
+          isLogged ? (
+            <div className="nav-item">
+              <NavLink to="/listes">Mes listes</NavLink>
+            </div>
+          ) : ''
+        }
+        
       </div>
       <div id="nav-connexion">
-        <Link to="/login" className="CTA-button">{isAuthenticated ? 'Connexion' : 'Connecté'}</Link>
+        {
+          isLogged ?
+            <Link to="/logout" className='CTA-button important'>Déconnexion</Link>
+            :
+            <Link to="/login" className='CTA-button'>Connexion</Link>
+        }
       </div>
     </nav>
   )
