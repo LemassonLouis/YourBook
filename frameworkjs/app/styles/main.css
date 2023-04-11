@@ -4,8 +4,49 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+html,
 body {
     position: relative;
     width: 100%;
     height: 100%;
+}
+
+:root {
+    --base-color: #ddd;
+    --primary-color: #BC490B;
+    --CTA-primary-hover: #893308;
+    --CTA-primary-focus: #E5590D;
+    --secondary-color: #23B6FF;
+    --CTA-secondary-hover: #1E9FDB;
+    --CTA-secondary-focus: #56C9FF;
+}
+
+.CTA-button {
+    padding: 8px 20px;
+    font-weight: 600;
+    color: black;
+    text-decoration: none;
+    background-color: var(--secondary-color);
+    border: none;
+    border-radius: 3px;
+}
+
+.CTA-button:hover {
+    background-color: var(--CTA-secondary-hover);
+}
+
+.CTA-button:active {
+    background-color: var(--CTA-secondary-focus);
+}
+
+.CTA-link {
+    color: var(--primary-color);
+}
+
+.CTA-link:hover {
+    color: var(--CTA-primary-hover);
+}
+
+.CTA-link:active {
+    color: var(--CTA-primary-focus);
 }

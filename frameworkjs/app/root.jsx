@@ -7,6 +7,7 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import Navigation from "./components/Navigation/Navigation";
+import { authenticator } from "./services/auth.server";
 
 import styles from "./styles/main.css";
 import { links as navigationLinks } from "./components/Navigation/Navigation";
@@ -35,6 +36,10 @@ export default function App() {
       </body>
     </html>
   );
+}
+
+export async function loader({ request }) {
+  return await authenticator.isAuthenticated(request);
 }
 
 export function links() {

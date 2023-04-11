@@ -1,9 +1,12 @@
-import { Link } from "@remix-run/react";
+import { Link, useLoaderData } from "@remix-run/react";
 import { NavLink } from "react-router-dom"
 
 import styles from './Navigation.css';
 
 export default function Navigation() {
+
+  const isAuthenticated = useLoaderData();
+
   return (
     <nav id="navigation">
       <div id="nav-logo">
@@ -18,7 +21,7 @@ export default function Navigation() {
         </div>
       </div>
       <div id="nav-connexion">
-        <Link to="/login">Connexion</Link>
+        <Link to="/login" className="CTA-button">{isAuthenticated ? 'Connexion' : 'Connecté'}</Link>
       </div>
     </nav>
   )
