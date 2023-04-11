@@ -9,22 +9,14 @@ export let authenticator = new Authenticator(sessionStorage);
 authenticator.use(
   new FormStrategy(async ({ form, context }) => {
 
-    console.log("context", context);
-
     const email = form.get("email");
     const password = form.get("password");
+    const confirmation = form.get("confirmation");
     const hashedPassword = hash(password);
-    console.log("hashed password", hashedPassword);
 
     const callFrom = context.caller;
-    console.log("call from", callFrom);
-    console.log(callFrom == "/register", callFrom === "/register");
-    console.log("is ok ?");
 
     if(callFrom == "/register") {
-
-      console.log("password", password, "confimration", confirmation);
-      console.log("password !== confirmation", password !== confirmation);
 
       if(password !== confirmation) throw("Password and confirmation aren't egal.");
 
@@ -38,9 +30,6 @@ authenticator.use(
     else {
       var user = await login(email, hashedPassword);
     }
-
-    console.log("user", user);
-    console.log("the end");
 
     return user;
   }),

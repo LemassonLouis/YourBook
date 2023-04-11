@@ -18,10 +18,9 @@ export default function RegisterPage() {
 }
 
 export async function action({ request }) {
-  console.log("request", request);
   return await authenticator.authenticate("user-pass", request, {
     successRedirect: "/",
-    // failureRedirect: "/register",
+    failureRedirect: "/register",
     context: { caller: "/register" },
   });
 };

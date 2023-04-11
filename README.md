@@ -26,8 +26,8 @@ Repo for school in collaboration with CorentinPageot
 
 ## Remix-auth
 
-- https://www.youtube.com/watch?v=5O_uufXA8xE
 - https://github.com/sergiodxa/remix-auth
 - https://github.com/sergiodxa/remix-auth-form
 - https://github.com/pbteja1998/remix-auth-email-link
 - https://nodejs.org/api/crypto.html#crypto
+- https://www.youtube.com/watch?v=5O_uufXA8xE
