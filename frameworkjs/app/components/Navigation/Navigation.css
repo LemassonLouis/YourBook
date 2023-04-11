@@ -22,13 +22,16 @@
     display: flex;
     flex-flow: row wrap;
     width: 85%;
+    height: 100%;
     padding: 0 40px;
 }
 
 .nav-item {
-    padding: 0 30px;
+    box-sizing: border-box;
+    height: inherit;
     font-size: 15pt;
     text-align: center;
+    border-bottom: solid 3px transparent;
 }
 
 .nav-item:hover {
@@ -40,7 +43,11 @@
 }
 
 .nav-item>a {
-    color: black;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 30px;
+    color: #000;
     text-decoration: none;
 }
 
