@@ -8,9 +8,9 @@ export default function RegisterPage() {
     <main id="register">
       <h1>Enregistrement</h1>
       <Form method="post">
-        <input type="email" name="email" placeholder="Email" required />
-        <input type="password" name="password" placeholder="Mot de passe" required />
-        <input type="password" name="confirmation" placeholder="Confirmation" required />
+        <input type="email" name="email" placeholder="Email" required className="CTA-input"/>
+        <input type="password" name="password" placeholder="Mot de passe" required className="CTA-input"/>
+        <input type="password" name="confirmation" placeholder="Confirmation" required className="CTA-input"/>
         {/* <input type="submit" name="register">Register</input> */}
         <button className="CTA-button">S'enregistrer</button>
       </Form>
