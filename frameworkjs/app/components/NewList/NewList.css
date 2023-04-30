@@ -1,0 +1,25 @@
+.NewList {
+    position: relative;
+}
+
+.modal-NewList {
+    position: absolute;
+    top: 0px;
+    left: 200px;
+    border: none;
+    box-shadow: 0 0 6px #999;
+}
+
+.modal-NewList>form {
+    padding: 20px;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.modal-NewList>form>input {
+    margin-bottom: 10px;
+}
+
+.modal-NewList>form>input:focus {
+    outline: none;
+}
