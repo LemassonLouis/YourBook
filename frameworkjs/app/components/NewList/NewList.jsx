@@ -1,4 +1,5 @@
 import { Form } from '@remix-run/react';
+import { createBookList } from '../../services/book_list';
 
 import styles from './NewList.css';
 
@@ -25,17 +26,13 @@ export default function NewList() {
       <button className='CTA-button' onClick={toggleModal}>Créer une nouvelle liste</button>
       <dialog className='modal-NewList'>
         <Form method='post'>
-            <input type='text' placeholder='Nom de la liste' required className="CTA-input"></input>
-            <button className='CTA-button'>Créer</button>
+          <input type='text' className="CTA-input" name='name' placeholder='Nom de la liste' required></input>
+          <button className='CTA-button'>Créer</button>
         </Form>
       </dialog>
     </div>
   )
 }
-
-export async function action({ request }) {
-  
-};
 
 export function links() {
   return [
@@ -44,4 +41,14 @@ export function links() {
       href: styles
     }
   ]
+}
+
+export async function newBookList(request) {
+
+  const formData = await request.formData();
+  const bookListData = {
+    name: formData.get("name"),
+  }
+
+  await createBookList(bookListData);
 }
