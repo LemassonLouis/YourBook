@@ -1,5 +1,21 @@
-.RemoveBookList {
+.RemoveBookList>img {
     display: block;
     width: 0.75%;
     cursor: pointer;
+}
+
+.modal-RemoveList {
+    position: absolute;
+    top: 0px;
+    left: 200px;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    padding: 20px;
+    border: none;
+    box-shadow: 0 0 6px #999;
+}
+
+.modal-RemoveList>p {
+    margin-bottom: 10px;
 }
