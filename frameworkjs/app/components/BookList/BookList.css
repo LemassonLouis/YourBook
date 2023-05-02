@@ -12,7 +12,7 @@
     flex-flow: row nowrap;
     align-items: center;
     width: -webkit-fill-available;
-    color: #aaa;
+    color: var(--text-color-1);
     text-decoration: none;
 }
 

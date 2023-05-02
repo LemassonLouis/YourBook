@@ -14,14 +14,14 @@ body {
 :root {
     --base-color: #ddd;
     --primary-color: #BC490B;
-    --CTA-primary-hover: #893308;
-    --CTA-primary-focus: #E5590D;
+    --CTA-primary-hover: #E5590D;
+    --CTA-primary-focus: #893308;
     --secondary-color: #23B6FF;
-    --CTA-secondary-hover: #1E9FDB;
-    --CTA-secondary-focus: #56C9FF;
+    --CTA-secondary-hover: #56C9FF;
+    --CTA-secondary-focus: #1E9FDB;
     --important-color: #AF1515;
-    --CTA-important-hover: #8E1212;
-    --CTA-important-focus: #CE1A1A;
+    --CTA-important-hover: #CE1A1A;
+    --CTA-important-focus: #8E1212;
 
     --text-color-1: black;
     --text-color-2: white;
@@ -88,7 +88,7 @@ body {
 
 .CTA-input {
     padding: 8px 12px;
-    border: solid 1px black;
+    border: solid 1px;
     border-radius: 3px;
 }
 
