@@ -32,7 +32,7 @@ export default function RemoveList({bookListId}) {
       <dialog className='modal-RemoveList'>
         <div>
           <p>Supprimer la liste ?</p>
-          <button className='CTA-button important' /*onClick={removeBookList}*/>Supprimer</button>
+          <button className='CTA-button important' onClick={() => removeBookList(bookListId)}>Supprimer</button>
         </div>
       </dialog>
     </div>
@@ -50,12 +50,9 @@ export function links() {
 
 // export 
 
-export async function removeBookList(event) {
+export async function removeBookList(bookListId) {
 
-  console.log("removeBookList", event);
-  const bookListId = event.target.getAttribute("data-bookListId");
+  // const test = await deleteBookList(bookListId);
 
-  await deleteBookList(bookListId);
-
-  redirect("/listes");
+  // redirect("/listes");
 }

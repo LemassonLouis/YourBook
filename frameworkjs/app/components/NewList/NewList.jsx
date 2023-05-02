@@ -28,11 +28,7 @@ export default function NewList() {
 
   return (
     <div className='NewList'>
-      <button className='CTA-button' onClick={(event) => {
-        console.log("alors?");
-        toggleModal(event);
-        console.log("bon...");
-      }}>Créer une nouvelle liste</button>
+      <button className='CTA-button' onClick={toggleModal}>Créer une nouvelle liste</button>
       <dialog className='modal-NewList'>
         <Form method='post'>
           <input type='text' className="CTA-input" name='name' placeholder='Nom de la liste' required></input>
