@@ -1,0 +1,29 @@
+.BookLists {
+    padding: 50px 100px;
+}
+
+.BookList {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 0 10px 5px 10px;
+    border-bottom: solid 1px black;
+}
+
+.BookList>h2 {
+    margin-right: 10px;
+}
+
+.BookList>p {
+    width: -webkit-fill-available;
+    color: #aaa;
+}
+
+.BookList>p::before {
+    content: "| ";
+}
+
+.BookList>button {
+    justify-self: flex-end;
+}
