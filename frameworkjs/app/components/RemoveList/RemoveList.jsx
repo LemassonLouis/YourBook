@@ -8,7 +8,7 @@ export default function RemoveList(bookListId) {
       <img src="./images/cross.svg" onClick={toggleModal} data-bookListId={bookListId} />
       <dialog className='modal-RemoveList'>
         <p>Supprimer la liste ?</p>
-        <button className='CTA-button important' onClick={removeBookList}></button>
+        <button className='CTA-button important' onClick={removeBookList}>Supprimer</button>
       </dialog>
     </div>
   )
