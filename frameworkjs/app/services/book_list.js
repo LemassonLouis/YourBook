@@ -17,3 +17,16 @@ export async function getBookListsByUserId(userId) {
     }
   });
 }
+
+export async function getBookListsById(bookListId) {
+  return await prisma.book_List.findUnique({
+    where: {
+      id: bookListId
+    }
+  });
+}
+
+export async function deleteBookList(bookListId) {
+  const bookList = await getBookListsById(bookListId);
+  return await prisma.book_List.delete(bookList);
+}

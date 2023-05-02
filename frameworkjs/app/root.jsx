@@ -12,6 +12,7 @@ import { isLogged } from "./services/auth.server";
 import styles from "./styles/main.css";
 import { links as navigationLinks } from "./components/Navigation/Navigation";
 import { links as NewListLinks } from "./components/NewList/NewList";
+import { links as RemoveListLinks } from "./components/RemoveList/RemoveList";
 
 export const meta = () => ({
   charset: "utf-8",
@@ -50,6 +51,7 @@ export function links() {
       href: styles
     },
     ...navigationLinks(),
-    ...NewListLinks()
+    ...NewListLinks(),
+    ...RemoveListLinks()
   ];
 }

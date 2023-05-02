@@ -1,4 +1,4 @@
-import { useLoaderData } from "@remix-run/react";
+import { Link, useLoaderData } from "@remix-run/react";
 import { redirect } from '@remix-run/node';
 
 import NewList, { newBookList } from "../components/NewList/NewList";
@@ -6,6 +6,7 @@ import { getBookListsByUserId } from "../services/book_list";
 
 import styles from '../styles/lists.css';
 import { loggedUser } from "../services/auth.server";
+import RemoveList from "../components/RemoveList/RemoveList";
 
 
 export default function Lists() {
@@ -13,16 +14,18 @@ export default function Lists() {
   const bookLists = useLoaderData();
 
   return (
-    <main>
+    <main id="lists">
       <h1>Mes listes</h1>
       <NewList />
       <div className="BookLists">
         {bookLists.length < 1 ? <p>Aucune listes</p> : bookLists.map(bookList => {
           return (
             <div className="BookList">
-              <h2>{bookList.name}</h2>
-              <p>(nombre de livres)</p>
-              <button>(croix_suppr)</button>
+              <Link to={bookList.id}>
+                <h2>{bookList.name}</h2>
+                <p>(nombre de livres)</p>
+              </Link>
+              <RemoveList RemoveList={bookList.id} />
             </div>
           )
         })}
