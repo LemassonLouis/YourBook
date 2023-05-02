@@ -11,17 +11,20 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
+  id        Int         @id @default(autoincrement())
+  email     String      @unique
   password  String
   name      String?
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  Book_List Book_List[]
 }
 
 model Book_List {
   id        Int      @id @default(autoincrement())
   name      String
+  owner     User     @relation(fields: [ownerId], references: [id])
+  ownerId   Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
