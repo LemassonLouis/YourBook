@@ -12,12 +12,12 @@ export default function BookList({isTitle}) {
     <>
       {bookLists?.length > 0 ? bookLists.map(bookList => {
         return (
-          <div className="BookList">
+          <div className="BookList" key={bookList.id}>
             <Link to={bookList.id}>
               {isTitle ? <h1>{bookList.name}</h1> : <h2>{bookList.name}</h2>}
               <p>(nombre de livres)</p>
             </Link>
-            {/* <RemoveList RemoveList={bookList.id} /> */}
+            <RemoveList bookListId={bookList.id} />
           </div>
         )
       }) : <p>Aucune listes</p>}
