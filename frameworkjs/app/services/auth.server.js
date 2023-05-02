@@ -50,9 +50,14 @@ export async function login(email, password) {
 }
 
 export async function isLogged(request) {
-  const user = await authenticator.isAuthenticated(request);
+  const user = await loggedUser(request);
   if (!user) return false;
   else return true;
+}
+
+export async function loggedUser(request) {
+  const user = await authenticator.isAuthenticated(request);
+  return user;
 }
 
 export async function logout(request) {
