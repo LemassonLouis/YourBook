@@ -1,6 +1,5 @@
 #navigation {
     box-sizing: border-box;
-    position: sticky;
     display: flex;
     flex-flow: row nowrap;
     align-items: center;

@@ -11,6 +11,11 @@ body {
     height: 100%;
 }
 
+header {
+    position: sticky;
+    top: 0;
+}
+
 :root {
     --base-color: #ddd;
     --primary-color: #BC490B;
