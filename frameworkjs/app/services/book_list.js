@@ -1,3 +1,5 @@
+import { useAsyncValue } from '@remix-run/react';
+
 const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();
@@ -13,20 +15,16 @@ export async function getBookLists() {
 export async function getBookListsByUserId(userId) {
   return await prisma.book_List.findMany({
     where: {
-      ownerId: userId
+      ownerId: userId,
     }
   });
 }
 
-export async function getBookListsById(bookListId) {
-  return await prisma.book_List.findUnique({
+export async function deleteBookList(bookListId, ownerId) {
+  return await prisma.book_List.deleteMany({
     where: {
-      id: bookListId
+      id: bookListId,
+      ownerId,
     }
   });
-}
-
-export async function deleteBookList(bookListId) {
-  const bookList = await getBookListsById(bookListId);
-  return await prisma.book_List.delete(bookList);
 }

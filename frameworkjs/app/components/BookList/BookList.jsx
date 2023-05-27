@@ -4,7 +4,7 @@ import RemoveList from "../RemoveList/RemoveList";
 
 import styles from "./BookList.css";
 
-export default function BookList({isTitle}) {
+export default function BookList({ isTitle, redirection }) {
 
   const bookLists = useLoaderData();
 
@@ -17,7 +17,7 @@ export default function BookList({isTitle}) {
               {isTitle ? <h1>{bookList.name}</h1> : <h2>{bookList.name}</h2>}
               <p>(nombre de livres)</p>
             </Link>
-            <RemoveList bookListId={bookList.id} />
+            <RemoveList bookListId={bookList.id} redirection={redirection} />
           </div>
         )
       }) : <p>Aucune listes</p>}

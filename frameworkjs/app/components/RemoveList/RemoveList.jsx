@@ -1,20 +1,16 @@
-import { redirect } from '@remix-run/node';
+import { Form } from '@remix-run/react';
 
-import { deleteBookList } from '../../services/book_list';
 import styles from './RemoveList.css';
 
-export default function RemoveList({bookListId}) {
+export default function RemoveList({ bookListId, redirection }) {
 
   function toggleModal(event) {
 
-    console.log("target", event.target);
+    // console.log("target", event.target);
 
     // Get modal
     const parent = event.target.parentElement;
     const modal = parent.querySelector("dialog");
-
-    console.log("modal", modal)
-    console.log("open", modal.open)
 
     // toggle modal display
     if(modal.open) modal.close();
@@ -32,7 +28,11 @@ export default function RemoveList({bookListId}) {
       <dialog className='modal-RemoveList'>
         <div>
           <p>Supprimer la liste ?</p>
-          <button className='CTA-button important' onClick={() => removeBookList(bookListId)}>Supprimer</button>
+          <Form method='post' action='/api/remove_liste' onSubmit={toggleModal}>
+            <input type='hidden' name='redirection' value={redirection}></input>
+            <input type='hidden' name='bookListId' value={bookListId}></input>
+            <button className='CTA-button important'>Supprimer</button>
+          </Form>
         </div>
       </dialog>
     </div>
@@ -46,13 +46,4 @@ export function links() {
       href: styles
     }
   ]
-}
-
-// export 
-
-export async function removeBookList(bookListId) {
-
-  // const test = await deleteBookList(bookListId);
-
-  // redirect("/listes");
 }

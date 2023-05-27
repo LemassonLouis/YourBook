@@ -18,7 +18,7 @@ export default function Lists() {
       <h1>Mes listes</h1>
       <NewList redirection="/listes" />
       <div className="BookLists">
-        <BookList isTitle={false} />
+        <BookList isTitle={false} redirection="/listes" />
       </div>
     </main>
   )
