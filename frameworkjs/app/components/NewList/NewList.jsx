@@ -1,8 +1,4 @@
 import { Form } from '@remix-run/react';
-import { redirect } from '@remix-run/node';
-
-import { loggedUser } from '../../services/auth.server';
-import { createBookList } from '../../services/book_list';
 
 import styles from './NewList.css';
 

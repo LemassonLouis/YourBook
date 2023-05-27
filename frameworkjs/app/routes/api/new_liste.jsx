@@ -9,16 +9,17 @@ export async function action({ request }) {
   const user = await loggedUser(request);
   if(!user) redirect('/login');
 
-  // Get form data and initialize book list data
+  // Get informations from form data
   const formData = await request.formData();
   const bookListData = {
     name: formData.get("name"),
     ownerId: user.id
   }
+  const redirection = formData.get("redirection");
 
   // Create a book list
   await createBookList(bookListData);
 
   // Redirect
-  return redirect(formData.redirection !== undefined ? formData.redirection : "/listes");
+  return redirect(redirection !== undefined ? redirection : "/listes");
 }
