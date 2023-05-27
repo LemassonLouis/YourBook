@@ -10,7 +10,7 @@ export default function NewList({redirection}) {
 
   function toggleModal(event) {
 
-    console.log("event", event)
+    // console.log("event", event)
   
     // Get modal
     const parent = event.target.parentElement;
@@ -30,7 +30,7 @@ export default function NewList({redirection}) {
     <div className='NewList'>
       <button className='CTA-button' onClick={toggleModal}>Créer une nouvelle liste</button>
       <dialog className='modal-NewList'>
-        <Form method='post' action="/api/new_liste">
+        <Form method='post' action="/api/new_liste" onSubmit={toggleModal}>
           <input type='hidden' name='redirection' value={redirection}></input>
           <input type='text' className="CTA-input" name='name' placeholder='Nom de la liste' required></input>
           <button className='CTA-button'>Créer</button>
