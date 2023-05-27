@@ -6,7 +6,7 @@ import { createBookList } from '../../services/book_list';
 
 import styles from './NewList.css';
 
-export default function NewList() {
+export default function NewList({redirection}) {
 
   function toggleModal(event) {
 
@@ -30,7 +30,8 @@ export default function NewList() {
     <div className='NewList'>
       <button className='CTA-button' onClick={toggleModal}>Créer une nouvelle liste</button>
       <dialog className='modal-NewList'>
-        <Form method='post'>
+        <Form method='post' action="/api/new_liste">
+          <input type='hidden' name='redirection' value={redirection}></input>
           <input type='text' className="CTA-input" name='name' placeholder='Nom de la liste' required></input>
           <button className='CTA-button'>Créer</button>
         </Form>
@@ -46,20 +47,4 @@ export function links() {
       href: styles
     }
   ]
-}
-
-// export 
-
-export async function newBookList(request) {
-
-  const user = await loggedUser(request);
-  if(!user) redirect('/register');
-
-  const formData = await request.formData();
-  const bookListData = {
-    name: formData.get("name"),
-    ownerId: user.id
-  }
-
-  await createBookList(bookListData);
 }
