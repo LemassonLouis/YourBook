@@ -1,5 +1,3 @@
-import { useAsyncValue } from '@remix-run/react';
-
 const { PrismaClient } = require('@prisma/client');
 
 const prisma = new PrismaClient();

@@ -27,7 +27,7 @@ export default function Lists() {
 export async function loader({request}) {
 
   const user = await loggedUser(request);
-  if(!user) redirect('/register');
+  if(!user) return redirect('/login');
 
   return await getBookListsByUserId(user.id);
 }
