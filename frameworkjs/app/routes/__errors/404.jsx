@@ -1,5 +1,5 @@
 export default function NotFound() {
   return (
-    <h1>404 - pagge non trouvé</h1>
+    <h1>404 - Page non trouvé</h1>
   )
 }
