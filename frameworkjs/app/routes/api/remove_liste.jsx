@@ -1,6 +1,5 @@
 import { redirect } from "@remix-run/node";
 
-// import { createBookList } from "~/services/book_list";
 import { loggedUser } from "~/services/auth.server";
 import { deleteBookList } from "~/services/book_list";
 
@@ -8,7 +7,7 @@ export async function action({ request }) {
 
   // Get logged user, if not : redirect to login
   const user = await loggedUser(request);
-  if(!user) redirect('/login');
+  if(!user) return redirect('/login');
 
   // Get informations from form data
   const formData = await request.formData();
@@ -19,5 +18,5 @@ export async function action({ request }) {
   await deleteBookList(bookListId, user.id);
 
   // Redirect
-  return redirect(redirection !== undefined ? redirection : "/listes");
+  return redirect(!redirection ? redirection : "/listes");
 }
