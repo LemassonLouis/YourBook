@@ -3,7 +3,8 @@ const { PrismaClient } = require('@prisma/client');
 const prisma = new PrismaClient();
 
 export async function createBookList(data) {
-  return await prisma.book_List.create({data});
+  // const bookList = await getBookListByName(data.name);
+  /*if(bookList === undefined)*/ return await prisma.book_List.create({data});
 }
 
 export async function getBookLists() {
