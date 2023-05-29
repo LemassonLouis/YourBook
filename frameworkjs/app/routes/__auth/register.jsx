@@ -1,9 +1,11 @@
-import { Form, Link } from "@remix-run/react";
-import { authenticator } from "../services/auth.server";
+import { Form, Link, useLoaderData } from "@remix-run/react";
+import { authenticator } from '~/services/auth.server';
 
-import styles from '../styles/register.css';
+import styles from '~/styles/register.css';
 
 export default function RegisterPage() {
+  const { redirection } = useLoaderData();
+
   return (
     <main id="register">
       <h1>Enregistrement</h1>
@@ -14,18 +16,27 @@ export default function RegisterPage() {
         {/* <input type="submit" name="register">Register</input> */}
         <button className="CTA-button">S'enregistrer</button>
       </Form>
-      <p>Vous avez déjà un compte ? <Link to="/login" className="CTA-link">Se connecter</Link></p>
+      <p>Vous avez déjà un compte ? <Link to={!redirection ? "/login" : '/login?redirection='+redirection} className="CTA-link">Se connecter</Link></p>
     </main>
   )
 }
 
 export async function action({ request }) {
+  const url = new URL(request.url)
+  const redirection = url.searchParams.get('redirection');
+
   return await authenticator.authenticate("user-pass", request, {
-    successRedirect: "/",
-    failureRedirect: "/register",
+    successRedirect: !redirection ? '/' : `/${redirection}`,
+    failureRedirect: !redirection ? '/register' : `/regiser?redirection=${redirection}`,
     context: { caller: "/register" },
   });
 };
+
+export async function loader({ request }) {
+  const url = new URL(request.url)
+  const redirection = url.searchParams.get('redirection');
+  return { redirection };
+}
 
 export function links() {
   return [

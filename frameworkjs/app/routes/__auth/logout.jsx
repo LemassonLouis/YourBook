@@ -1,10 +1,9 @@
-import { isLogged, logout } from "../services/auth.server"
 import { Link, useLoaderData } from '@remix-run/react';
+import { isLogged, logout } from '~/services/auth.server';
 
-import styles from '../styles/logout.css';
+import styles from '~/styles/logout.css';
 
 export default function Logout() {
-
   const logged = useLoaderData();
 
   return (
@@ -18,7 +17,7 @@ export default function Logout() {
 export async function loader({ request }) {
   const logged = await isLogged(request);
   if(logged) await logout(request);
-  return false;
+  return logged;
 }
 
 export function links() {
