@@ -26,7 +26,7 @@ export async function action({ request }) {
   const redirection = url.searchParams.get('redirection');
 
   return await authenticator.authenticate("user-pass", request, {
-    successRedirect: !redirection ? '/' : `/${redirection}`,
+    successRedirect: !redirection ? '/' : redirection,
     failureRedirect: !redirection ? '/register' : `/regiser?redirection=${redirection}`,
     context: { caller: "/register" },
   });

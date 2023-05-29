@@ -28,8 +28,7 @@ export default function RemoveList({ bookListId, redirection }) {
       <dialog className='modal-RemoveList'>
         <div>
           <p>Supprimer la liste ?</p>
-          <Form method='post' action='/api/remove_liste' onSubmit={toggleModal}>
-            <input type='hidden' name='redirection' value={redirection}></input>
+          <Form method='post' action={`/api/remove_liste?redirection=${redirection}`} onSubmit={toggleModal}>
             <input type='hidden' name='bookListId' value={bookListId}></input>
             <button className='CTA-button important'>Supprimer</button>
           </Form>

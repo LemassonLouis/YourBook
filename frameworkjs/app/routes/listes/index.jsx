@@ -10,7 +10,6 @@ import styles from '~/styles/lists.css';
 import { links as bookListLinks } from '~/components/BookList/BookList';
 
 export default function Lists() {
-
   const bookLists = useLoaderData();
 
   return (
@@ -23,9 +22,8 @@ export default function Lists() {
 }
 
 export async function loader({request}) {
-
   const user = await loggedUser(request);
-  if(!user) return redirect('/login');
+  if(!user) return redirect('/login?redirection=/listes');
 
   return await getBookListsByUserId(user.id);
 }
