@@ -23,6 +23,14 @@ export async function getBookListsByUserId(userId) {
   });
 }
 
+// export async function getBookListById(bookListId) {
+//   return await prisma.book_List.findUnique({
+//     where: {
+//       id: bookListId
+//     }
+//   })
+// }
+
 export async function getBookListByName(bookListName, ownerId) {
   return await prisma.book_List.findMany({
     where: {
