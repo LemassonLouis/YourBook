@@ -4,6 +4,7 @@ import { redirect } from "@remix-run/node";
 import { loggedUser } from "~/services/auth.server";
 import { getBookListByName } from "~/services/book_list";
 
+import Arborescence from "~/components/Arborescence/Arborescence";
 import BookList from "~/components/BookList/BookList";
 
 // import styles from "~/styles/note-details.css";
@@ -16,6 +17,7 @@ export default function BookListDetail() {
   return (
     <main>
       <h1>{bookList[0].name}</h1>
+      <Arborescence path={`listes/${bookList[0].name}`} />
       {/* <BookList bookLists={bookList} isTitle={true} removeRedirection="/listes" /> */}
       {/* Listes livres */}
     </main>
